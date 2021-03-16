@@ -1,0 +1,59 @@
+
+.jobs-wrapper {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jobs-wrapper .jobs-display {
+    width: 50%;
+    height: 100%;
+
+    background-color: white;
+}
+
+.jobs-wrapper ul {
+    width: 100%;
+    height: 100%;
+
+    overflow: scroll;
+    margin: 0;
+    padding: 0;
+
+    border: 2px solid lightgray;
+
+    font-size: 1.5em;
+    font-family: 'Nunito', sans-serif;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.jobs-display li {
+    padding: 5% 10%;
+
+    border-bottom: 1px solid gray;
+}
+
+.add-job {
+    text-align: center;
+    background-color: ghostwhite;
+
+    font-family: sans-serif;
+
+    cursor: pointer;
+
+    color: gray;
+
+}
+
+.add-job:hover {
+    background-color: ghostwhite;
+    color: black;
+
+    border: 2px solid black
+}

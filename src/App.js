@@ -1,13 +1,12 @@
 import React, { useState }from 'react';
 
+import classes from './App.css'
+
 import Layout from './components/layout/layout';
 
 const App = () => {
-
-    const [currentId, setCurrentId] = useState(null);
-
     return (
-        <div>
+        <div className={classes.app}>
             <Layout />
         </div>
     )

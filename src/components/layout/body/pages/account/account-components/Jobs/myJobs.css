@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+.jobs-container {
+    width: 100%;
+    height: 100%;
+
+    padding: 1%;
+}
+
+.jobs-container .jobs-container-2 {
+    width: 100%;
+    height: 100%;
+
+    background-color: ghostwhite;
+}
+
+.jobs-container-2 .jobs-selector {
+    height: 15%;
+    width:100%;
+
+    background-color: rgb(10, 10, 10);
+    font-family: 'Ambit';
+    font-size: 1.5em;
+    display: flex;
+}
+
+.jobs-selector .jobs-heading {
+    width: 25%;
+    height: 100%;
+
+    color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.jobs-selector .jobs-heading-active {
+    width: 25%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.jobs-container-2 .jobs-display {
+    width: 100%;
+    height: 85%;
+}
