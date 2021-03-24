@@ -1,4 +1,4 @@
-import { CREATE_JOB, FETCH_JOB, FETCH_ALL_JOB, UPDATE_JOB, DELETE_JOB, SEARCH_JOB, FETCH_SOME_JOBS } from '../../constants/actionTypes';
+import { CREATE_JOB, FETCH_JOB, FETCH_ALL_JOB, UPDATE_JOB, DELETE_JOB, FETCH_SOME_JOBS } from '../../constants/actionTypes';
 
 import * as api from '../api/index';
 

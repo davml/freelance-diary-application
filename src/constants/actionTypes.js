@@ -36,3 +36,6 @@ export const SEARCH_USER = 'SEARCH_USERS';
 export const DELETE_USER = 'DELETE_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const USER_JOB_APPLY = 'USER_JOB_APPLY';
+export const USER_JOB_DELETE = 'USER_JOB_DELETE';
+export const USER_GET_APPLICANTS = 'USER_GET_APPLICANTS';
+export const USER_JOB_STATE = 'USER_JOB_STATE';

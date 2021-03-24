@@ -17,7 +17,10 @@ export const fetchAccounts = () => API.get('/user/');
 export const fetchAccount = (id) => API.get(`/user/${id}`);
 export const updateAccount = (id, updatedAccount) => API.patch(`/user/${id}`, updatedAccount);
 export const deleteAccount = (id) => API.delete(`/user/${id}`);
-export const userJobApply = (userId, jobId) => API.post('/user/apply', {userId, jobId})
+export const userJobApply = (userId, jobId) => API.post('/user/apply', {userId, jobId});
+export const userJobDelete = (userId, jobId) => API.post('/user/delete', {userId, jobId});
+export const getJobApplicants = (users) => API.post('/user/getUsers', {users: users});
+export const updateJobState = (userId, jobId, newState) => API.post('/user/jobupdate', {userId: userId, jobId: jobId, newState: newState});
 
 
 export const businessSignIn = (formData) => API.post('/businessuser/signin', formData);

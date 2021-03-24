@@ -21,7 +21,6 @@ const AccountModal = (props) => {
     const [formData, setFormData] = useState(initialState);
 
     const [click, setClick] = useState(props?.option);
-    const toggleClick = () => setClick(!click);
 
     useEffect(() => {
         setClick(props?.option);

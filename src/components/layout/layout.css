@@ -5,12 +5,12 @@
     flex-direction: column;
 }
 
-.navbar {
+.layout .navbar {
     width: 100%;
     height: 15%;
 }
 
-.body {
+.layout .body {
     width: 100%;
     height: 85%;
 }

@@ -20,7 +20,10 @@ const MyBusiness = () => {
     }, [])
 
     const [currentComponent, setCurrentComponent] = useState(<BusinessProfile />)
-  
+    useEffect(() => {
+        dispatch(getBusinessAccount(currentUser?.result?._id));
+    }, [currentComponent])
+
     return(
         <div className={classes["account-wrapper"]}>
 

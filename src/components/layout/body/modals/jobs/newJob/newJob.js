@@ -23,6 +23,11 @@ const NewJob = (props) => {
         description: "",
         payment: "",
         companyId: business?._id,
+        applicants: {
+            pending: [],
+            rejected: [],
+            successful: ""
+        },
         timeline: {
             deadline: "",
             startDate: "",
@@ -36,18 +41,42 @@ const NewJob = (props) => {
         setBusinessData(business);
     }, [business]);
 
+    useEffect(() => {
+        setJobData({title: "",
+        description: "",
+        payment: "",
+        companyId: business?._id,
+        applicants: {
+            pending: [],
+            rejected: [],
+            successful: ""
+        },
+        timeline: {
+            deadline: "",
+            startDate: "",
+            finishDate: ""
+        },
+        skills: [],
+        selectedFile: ""})
+    }, [props?.modal])
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         dispatch(createJob(jobData));
         dispatch(getBusinessAccount(businessData?._id))
+        props?.setModal(false);
     }
 
     const handleSkill = (e) => {
         e.preventDefault();
 
         let skills = jobData?.skills;
-        skills.push(currentSkill);
+        if(currentSkill){
+            skills?.push(currentSkill)
+        }
+        setCurrentSkill(null);
+        document.getElementById('skill').value="";
 
         setJobData({...jobData, skills: skills})
     }
@@ -92,7 +121,7 @@ const NewJob = (props) => {
                                 </div>
 
                                 <div className={classes["form-left-item"]}>
-                                    <input type="text" placeholder="eg. CSS" onChange={(e) => setCurrentSkill(e.target.value)}/>
+                                    <input type="text" id="skill" placeholder="eg. CSS" onChange={(e) => setCurrentSkill(e.target.value)}/>
                                     <button type="submit" onClick={handleSkill}>Add Skill</button>
                                 </div>
 

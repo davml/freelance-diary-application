@@ -5,11 +5,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import JobsList from './jobsList/jobsList';
 
 const Search = (props) => {
-    let jobsList = props?.location?.searchProps?.search;
+    /*let jobsList = props?.location?.searchProps?.search;*/
+
+    let jobsList = useSelector((state) => state?.job);
+    console.log(jobsList);
+
+    useEffect(() => {
+        setPageJobs(jobsList?.slice(0,10));
+        setPage({page: 1});
+        setNumPages(Math.ceil(jobsList?.length / 10));
+
+        pagesArray = [];
+        for(let i=0; i<numPages; i++){
+            pagesArray?.push(i+1);            
+        }
+        setIndex(pagesArray.map(page => <p onClick={()=>setPage({page: page})} className={classes["index-select"]}>{page}</p>));
+    }, [jobsList])
+
     const [pageJobs, setPageJobs] = useState(jobsList.slice(0, 10))
     let pagesArray = [];
     let indexStart;
-    let indexEnd;
 
     const [page, setPage] = useState({page: 1});
     const [numPages, setNumPages] = useState(Math.ceil(jobsList?.length / 10));

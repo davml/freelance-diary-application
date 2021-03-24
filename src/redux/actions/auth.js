@@ -1,4 +1,4 @@
-import { AUTH_USER, DELETE_USER, FETCH_USER, FETCH_ALL_USER, UPDATE_USER, USER_JOB_APPLY } from '../../constants/actionTypes';
+import { AUTH_USER, DELETE_USER, FETCH_USER, FETCH_ALL_USER, UPDATE_USER, USER_JOB_APPLY, USER_JOB_DELETE, USER_GET_APPLICANTS, USER_JOB_STATE } from '../../constants/actionTypes';
 import * as api from '../api/index';
 
 export const signin = (formData, history) => async (dispatch) => {
@@ -72,5 +72,35 @@ export const userJobApply = (userId, jobId) => async (dispatch) => {
         dispatch({ type: USER_JOB_APPLY, payload: {userId, jobId} });
     } catch (error) {
         console.log(error.message);
+    }
+}
+
+export const userJobDelete = (userId, jobId) => async (dispatch) => {
+    try {
+        await api.userJobDelete(userId, jobId);
+
+        dispatch({ type: USER_JOB_DELETE, payload: { userId, jobId }})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const getJobApplicants = (users) => async (dispatch) => {
+    try {
+        const { data } = await api.getJobApplicants(users);
+
+        dispatch({ type: USER_GET_APPLICANTS, payload: data })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const updateJobState = (userId, jobId, newState) => async (dispatch) => {
+    try {
+        const { data } = await api.updateJobState(userId, jobId, newState);
+
+        dispatch({ type: USER_JOB_STATE, payload: data })
+    } catch (error) {
+        console.log(error.message);       
     }
 }

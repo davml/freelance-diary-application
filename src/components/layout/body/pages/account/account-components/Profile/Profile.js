@@ -93,23 +93,6 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className={classes["cv-column"]}>
-                        <div className={classes["cv-subcolumn"]}>
-                            <div className={classes["cv-subcolumn-heading"]}>
-                                <h1>CONTACT DETAILS</h1>
-                            </div>
-                            <div className={classes["cv-content"]}>
-                                <textarea value={userData?.cv?.contactDetails} name="contactDetails" className={classes["cv-text-area"]} onChange={(e) => setUserData({...userData, cv: {...userData.cv, contactDetails: e.target.value}})} maxlength="320"/>
-                            </div>
-                        </div>
-
-                        <div className={classes["cv-subcolumn"]}>
-                            <div className={classes["cv-subcolumn-heading"]}>
-                                <h1>OYT EXPERIENCE</h1>
-                            </div>
-                        </div>
-                    </div>
-
                     <button type="submit" className={classes["submit-btn"]}>Save</button>
                 </form>
             </div>

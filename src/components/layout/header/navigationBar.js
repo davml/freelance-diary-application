@@ -15,12 +15,11 @@ const NavigationBar = (props) => {
     const [search, setSearch] = useState(null);
 
     useEffect(() => {
-        const query = {"query":"job"}
         dispatch(searchJobs({"query":search}))
     }, [search])
 
     const jobs = useSelector((state) => state.job);
-    let jobsList;
+    let jobsList = [];
     if(jobs){
         jobsList = jobs.map((job) => <Link className={classes.dropdownLink}>{job?.title}</Link>);
     }
@@ -89,11 +88,6 @@ const NavigationBar = (props) => {
                                     <i class="fas fa-home"></i> Home
                                 </Link>
                             </li>
-                            <li className={classes.navitem}>
-                                <Link to='/about' className={classes.navlink}>
-                                    About
-                                </Link>
-                            </li>
 
                             <li className={classes.navitem}>
                                 <div className={classes.dropdown}>
@@ -157,11 +151,6 @@ const NavigationBar = (props) => {
                                     <i class="fas fa-home"></i> Home
                                 </Link>
                             </li>
-                            <li className={classes.navitem}>
-                                <Link to='/about' className={classes.navlink}>
-                                    About
-                                </Link>
-                            </li>
 
                             <li className={classes.navitem}>
                                 <div className={classes.dropdown}>
@@ -211,12 +200,6 @@ const NavigationBar = (props) => {
                                 <i class="fas fa-home"></i> Home
                             </Link>
                         </li>
-                        <li className={classes.navitem}>
-                            <Link to='/about' className={classes.navlink}>
-                                About
-                            </Link>
-                        </li>
-
 
                         <li className={classes.navitem}>
                             <Link to='/business' className={classes.navlink}>
@@ -224,13 +207,9 @@ const NavigationBar = (props) => {
                             </Link>
                         </li>
 
-                        
-
-
-
                         <li className={classes.navitem}>
                             <div className={classes.dropdown}>
-                                <Link to='/register' className={classes.navlink}>
+                                <Link className={classes.navlink}>
                                     <button className={classes.joinBtn}>Sign Up <i class="fa fa-caret-down"></i></button>
                                 </Link>
 

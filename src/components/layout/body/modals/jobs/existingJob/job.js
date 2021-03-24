@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { getBusinessAccount } from '../../../../../../redux/actions/businessAuth';
 import classes from './job.css';
 import { userJobApply } from '../../../../../../redux/actions/auth';
 
+import Business from '../../business/business';
+
 const Job = (props) => {
     const [user, setUser] = useState(useSelector((state) => state?.user));
+    const [businessUser, setBusinessUser] = useState(useSelector((state) => state?.businessUser));
     const dispatch = useDispatch();
+
+    const [jobModal, setJobModal] = useState(false);
+    const toggleJobModal = () => setJobModal(!jobModal);
 
     const userApply = (e) => {
         e.preventDefault();
 
         dispatch(userJobApply(user?._id, props?.job?._id));
+        props?.setModal(false);
     }
     
     if(props?.modal){
@@ -57,7 +65,10 @@ const Job = (props) => {
                                 </div>
 
                                 <div className={classes["form-left-item"]}>
-                                    {user?.jobs?.pending?.includes(props?.job?._id) ? <button disabled="true">You have already applied for this vacancy.</button> : <button onClick={userApply}>Apply for Job</button>}
+                                    <div className={classes["form-btns"]}>
+                                        <button onClick={(e) => {e.preventDefault(); dispatch(getBusinessAccount(props?.job?.companyId)); setJobModal(true);}}>View Business</button>
+                                        { !JSON.parse(localStorage.getItem('profile')) || JSON.parse(localStorage.getItem('profile'))?.result?.accountType==="Business" ? null : (user?.jobs?.pending?.includes(props?.job?._id) || user?.jobs?.rejected?.includes(props?.job?._id) || props?.job?.jobState!=="application" ? <button disabled="true">Unable to apply for this vacancy.</button> : <button onClick={userApply}>Apply for Job</button>)}
+                                    </div>
                                 </div>
                             </div>
                             
@@ -75,8 +86,11 @@ const Job = (props) => {
                         </form>
                     </div>
                 </div>
+
+                <Business modal={jobModal} setModal={setJobModal} toggle={toggleJobModal} />
             </>,
             document.getElementById('portal')
+            
         )
     }
     else {

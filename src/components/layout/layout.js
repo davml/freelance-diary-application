@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import Home from './body/pages/home/home';
 import Account from './body/pages/account/Account';
-import Business from './body/pages/business/business';
 import Search from './body/pages/search/search';
 import About from './body/pages/about/about';
 import MyBusiness from './body/pages/mybusiness/mybusiness';
 import oytBusiness from './body/pages/oytBusiness/oytBusiness';
 
-import { searchJobs, getJobs } from '../../redux/actions/jobs';
-
-import { getAccount, getAccounts } from '../../redux/actions/auth';
+import { getAccount } from '../../redux/actions/auth';
 import { getBusinessAccount } from '../../redux/actions/businessAuth';
 
 
@@ -25,9 +22,6 @@ const Layout = () => {
     const dispatch = useDispatch();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-    /*const query = {"query":"job"}
-    dispatch(searchJobs(query));*/
-
     useEffect(() => {
         if(user){
             if(user?.result?.accountType==="Business"){
@@ -38,12 +32,6 @@ const Layout = () => {
             }
         }
     }, [])
-
-    const temp = useSelector((job) => {
-        console.log(job);
-    })
-    
-
 
     return (
         <Router>

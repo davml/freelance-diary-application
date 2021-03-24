@@ -80,15 +80,6 @@ const Home = () => {
                         <p className={classes["text-info"]}>Painter</p>
                     </div>
                 </div>
-
-                <div className={classes["home-search"]}>
-                    <p>Search for your job, on your terms...</p>
-                    <div className={classes["search-container"]}>
-                        <button className={classes["properties"]}><i class="fas fa-arrow-down"></i></button>
-                        <input type="text" className={classes["searchbox"]} placeholder="Search..."/>
-                        <button type="submit" className={classes["submit-search"]}><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
             </div>
         </div>   
     )
